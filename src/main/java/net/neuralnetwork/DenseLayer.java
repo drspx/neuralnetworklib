@@ -16,6 +16,9 @@ public class DenseLayer {
     public double[][] dBiases;
     public double[][] dInputs;
 
+    public double[][] weightMomentums;
+    public double[][] biasMomentums;
+
 
     public DenseLayer(int inputSize, int neurons) {
         weights = random(inputSize, neurons);

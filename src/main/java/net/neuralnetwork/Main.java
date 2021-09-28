@@ -11,12 +11,11 @@ public class Main {
 
         int epochs = 10000;
 
-        DenseLayer dense1 = new DenseLayer(2, 16);
+        DenseLayer dense1 = new DenseLayer(2, 64);
         ActivationReLU activation1 = new ActivationReLU();
-        DenseLayer dense2 = new DenseLayer(16, 32);
-        ActivationReLU activation2 = new ActivationReLU();
-        DenseLayer dense3 = new DenseLayer(32, 3);
+        DenseLayer dense2 = new DenseLayer(64, 3);
         ActivationSoftmaxLossCategoricalCrossentropy lossActivation = new ActivationSoftmaxLossCategoricalCrossentropy();
+        OptimizerSGDWithMomentum.decay = 0.001;
 
         double loss = 0;
         for (int i = 0; i < epochs; i++) {
@@ -24,24 +23,24 @@ public class Main {
             dense1.forward(dataX);
             activation1.forward(dense1.output);
             dense2.forward(activation1.output);
-            activation2.forward(dense2.output);
-            dense3.forward(activation2.output);
-            loss = lossActivation.forward(dense3.output, datay);
+            loss = lossActivation.forward(dense2.output, datay);
 
             lossActivation.backward(lossActivation.output, datay);
-            dense3.backward(lossActivation.dInputs);
-            activation2.backward(dense3.dInputs);
-            dense2.backward(activation2.dInputs);
+            dense2.backward(lossActivation.dInputs);
             activation1.backward(dense2.dInputs);
             dense1.backward(activation1.dInputs);
 
-            OptimizerSGD.updateParams(dense1);
-            OptimizerSGD.updateParams(dense2);
+            OptimizerSGDWithMomentum.preUpdateParameters();
+            OptimizerSGDWithMomentum.updateParamsWithMomentum(dense1);
+            OptimizerSGDWithMomentum.updateParamsWithMomentum(dense2);
+            OptimizerSGDWithMomentum.postUpdateParameters();
 
-            if (i % (epochs / 10) == 0) {
+//            if (i % (epochs / 10) == 0) {
+            if (i%100==0){
                 System.out.println("epoch:" + i);
                 System.out.println("acc:" + Tools.accuracy(lossActivation.output, datay));
                 System.out.println("loss:" + loss);
+                System.out.println("learning rate:" + OptimizerSGDWithMomentum.currentLearningRate);
                 System.out.println();
             }
 

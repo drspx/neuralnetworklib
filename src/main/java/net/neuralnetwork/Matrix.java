@@ -240,4 +240,14 @@ public class Matrix {
             System.out.println();
         }
     }
+
+    public static double[][] scalar(double scalar, double[][] matrix) {
+        double[][] matrix2 = zeroesLike(matrix);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                matrix2[i][j] = matrix[i][j] * scalar;
+            }
+        }
+        return matrix2;
+    }
 }

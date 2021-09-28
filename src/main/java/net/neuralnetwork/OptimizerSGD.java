@@ -1,14 +1,15 @@
 package net.neuralnetwork;
 
 public class OptimizerSGD {
-    private double learningRate = 1;
 
-    public OptimizerSGD() {
-    }
+    public double learningRate = 1;
 
-    public OptimizerSGD(double learningRate) {
-        this.learningRate = learningRate;
-    }
+//    public OptimizerSGD() {
+//    }
+//
+//    public OptimizerSGD(double learningRate) {
+//        this.learningRate = learningRate;
+//    }
 
     public static void updateParams(DenseLayer layer) {
         double learningRate = 1;
