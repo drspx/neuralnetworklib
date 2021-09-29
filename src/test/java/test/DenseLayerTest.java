@@ -2,6 +2,7 @@ package test;
 
 import net.neuralnetwork.DenseLayer;
 import net.neuralnetwork.Main;
+import net.neuralnetwork.Tools;
 import org.junit.jupiter.api.Test;
 
 public class DenseLayerTest {
@@ -27,7 +28,7 @@ public class DenseLayerTest {
         double[] biases2 = {-1, 2, -0.5};
 
         DenseLayer layer1 = new DenseLayer(2, 3);
-        layer1.forward(Main.spiralDataX());
+        layer1.forward(Tools.spiralDataX());
         DenseLayer layer2 = new DenseLayer(3, 2);
         layer2.forward(layer1.output);
 //        Matrix.printMatrix(layer2.output);

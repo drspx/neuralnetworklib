@@ -18,6 +18,8 @@ public class DenseLayer {
 
     public double[][] weightMomentums;
     public double[][] biasMomentums;
+    public double[][] weightCache;
+    public double[][] biasCache;
 
 
     public DenseLayer(int inputSize, int neurons) {

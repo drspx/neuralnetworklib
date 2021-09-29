@@ -6,6 +6,10 @@ public class TestTools {
 
     public static void assertMatrix(double[][] expected, double[][] actual) {
         double roundWith = 1000000.0;
+        assertMatrix(expected, actual, roundWith);
+    }
+
+    public static void assertMatrix(double[][] expected, double[][] actual, double roundWith) {
         for (int i = 0; i < actual.length; i++) {
             for (int j = 0; j < actual[0].length; j++) {
                 Assertions.assertEquals(Math.round(expected[i][j] * roundWith) / roundWith, Math.round(actual[i][j] * roundWith) / roundWith);
