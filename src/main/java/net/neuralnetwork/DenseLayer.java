@@ -21,6 +21,11 @@ public class DenseLayer {
     public double[][] weightCache;
     public double[][] biasCache;
 
+    public double weightRegularizerL1 = 0;
+    public double weightRegularizerL2 = 0;
+    public double biasRegularizerL1 = 0;
+    public double biasRegularizerL2 = 0;
+
 
     public DenseLayer(int inputSize, int neurons) {
         weights = random(inputSize, neurons);

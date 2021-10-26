@@ -25,6 +25,7 @@ public class Main {
             activation1.forward(dense1.output);
             dense2.forward(activation1.output);
             loss = lossActivation.forward(dense2.output, datay);
+            loss += lossActivation.regularizationLoss(dense1) + lossActivation.regularizationLoss(dense2);
 
             lossActivation.backward(lossActivation.output, datay);
             dense2.backward(lossActivation.dInputs);

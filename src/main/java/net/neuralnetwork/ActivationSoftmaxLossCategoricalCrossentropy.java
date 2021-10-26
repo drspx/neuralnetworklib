@@ -1,6 +1,6 @@
 package net.neuralnetwork;
 
-public class ActivationSoftmaxLossCategoricalCrossentropy {
+public class ActivationSoftmaxLossCategoricalCrossentropy extends Loss{
 
     ActivationSoftmax activationSoftmax = new ActivationSoftmax();
     CategoricalCrossEntropyLoss loss = new CategoricalCrossEntropyLoss();

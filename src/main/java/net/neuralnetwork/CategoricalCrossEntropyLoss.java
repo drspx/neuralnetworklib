@@ -5,7 +5,7 @@ import java.util.Arrays;
 import static net.neuralnetwork.Matrix.applyFunction;
 
 
-public class CategoricalCrossEntropyLoss {
+public class CategoricalCrossEntropyLoss extends Loss {
 
     public double[] output;
     public double[][] dInputs;
